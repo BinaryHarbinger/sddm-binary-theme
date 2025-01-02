@@ -1,4 +1,4 @@
-# sddm-astronaut-theme
+# sddm-binary-theme
 
 A theme for the [SDDM login manager](https://github.com/sddm/sddm).
 
@@ -35,8 +35,8 @@ sddm-qt6 qt6-svg
 1. Clone this repository, copy fonts to `/usr/share/fonts/`:
 
    ```sh
-   sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/sddm/themes/sddm-astronaut-theme
-   sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
+   sudo git clone https://github.com/binaryharbinger/sddm-binary-theme.git /usr/share/sddm/themes/sddm-astronaut-theme
+   sudo cp /usr/share/sddm/themes/sddm-binary-theme/Fonts/* /usr/share/fonts/
    ```
 
 2. Then edit `/etc/sddm.conf` using the following command:
@@ -66,9 +66,9 @@ sddm-qt6 qt6-svg
 
 ### Credits
 
-Based on the theme [`Sugar Dark for SDDM`](https://github.com/MarianArlt/sddm-sugar-dark) by **MarianArlt**.
+Based on the theme [`Sugar Dark for SDDM`](https://github.com/kittydev/sddm-astronout-theme) by **MarianArlt**.
 
 ### License
 
 Distributed under the **[GPLv3+](https://www.gnu.org/licenses/gpl-3.0.html) License**.    
-Copyright (C) 2022-2024 Keyitdev.
+Copyright (C) 2025 BinaryHarbinger.
