@@ -35,7 +35,7 @@ sddm-qt6 qt6-svg
 1. Clone this repository, copy fonts to `/usr/share/fonts/`:
 
    ```sh
-   sudo git clone https://github.com/binaryharbinger/sddm-binary-theme.git /usr/share/sddm/themes/sddm-astronaut-theme
+   sudo git clone https://github.com/binaryharbinger/sddm-binary-theme.git /usr/share/sddm/themes/sddm-binary-theme
    sudo cp /usr/share/sddm/themes/sddm-binary-theme/Fonts/* /usr/share/fonts/
    ```
 
