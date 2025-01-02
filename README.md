@@ -43,7 +43,7 @@ sddm-qt6 qt6-svg
 
     ```sh
     echo "[Theme]
-    Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
+    Current=sddm-binary-theme" | sudo tee /etc/sddm.conf
     ```
 
 
