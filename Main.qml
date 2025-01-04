@@ -1,13 +1,12 @@
-// Config created by Keyitdev https://github.com/Keyitdev/sddm-astronaut-theme
-// Copyright (C) 2022-2025 Keyitdev
-// Based on https://github.com/MarianArlt/sddm-sugar-dark
+// Config created by BinaryHarbinger https://github.com/binaryharbinger/sddm-binary-theme
+// Copyright (C) 2025 BinaryHarbinger
+// Based on https://github.com/binaryharbinger/sddm-astronaut-theme
 // Distributed under the GPLv3+ License https://www.gnu.org/licenses/gpl-3.0.html
 
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import QtQuick.Effects
-import QtMultimedia
 
 import "Components"
 
@@ -65,7 +64,7 @@ Pane {
             width: parent.width
             anchors.fill: parent
             z: 1
-            color: config.DimBackgroundColor
+
             opacity: config.DimBackground
         }
 
@@ -181,35 +180,7 @@ Pane {
         }
         
         Image {
-            id: backgroundPlaceholderImage
-
-            z: 10
-            source: config.BackgroundPlaceholder
-            visible: false
-        }
-
-        AnimatedImage {
             id: backgroundImage
-            
-            MediaPlayer {
-                id: player
-                
-                videoOutput: videoOutput
-                autoPlay: true
-                playbackRate: config.BackgroundSpeed == "" ? 1.0 : config.BackgroundSpeed
-                loops: -1
-                onPlayingChanged: {
-                    console.log("Video started.")
-                    backgroundPlaceholderImage.visible = false;
-                }
-            }
-
-            VideoOutput {
-                id: videoOutput
-                
-                fillMode: config.CropBackground == "true" ? VideoOutput.PreserveAspectCrop : VideoOutput.PreserveAspectFit
-                anchors.fill: parent
-            }
 
             height: parent.height
             width: config.HaveFormBackground == "true" && config.FormPosition != "center" && config.PartialBlur != "true" ? parent.width - formBackground.width : parent.width
@@ -226,26 +197,12 @@ Pane {
                                config.BackgroundVerticalAlignment == "bottom" ?
                                Image.AlignBottom : Image.AlignVCenter
 
-            speed: config.BackgroundSpeed == "" ? 1.0 : config.BackgroundSpeed
-            paused: config.PauseBackground == "true" ? 1 : 0
+            source: config.background || config.Background
             fillMode: config.CropBackground == "true" ? Image.PreserveAspectCrop : Image.PreserveAspectFit
             asynchronous: true
             cache: true
             clip: true
             mipmap: true
-
-            Component.onCompleted:{
-                var fileType = config.Background.substring(config.Background.lastIndexOf(".") + 1)
-                const videoFileTypes = ["avi", "mp4", "mov", "mkv", "m4v", "webm"];
-                if (videoFileTypes.includes(fileType)) {
-                    backgroundPlaceholderImage.visible = true;
-                    player.source = Qt.resolvedUrl(config.Background)
-                    player.play();
-                }
-                else{
-                    backgroundImage.source = config.background || config.Background
-                }
-            }
         }
 
         MouseArea {
@@ -267,15 +224,10 @@ Pane {
 
         MultiEffect {
             id: blur
-            
+
             height: parent.height
-
-            // width: config.FullBlur == "true" ? parent.width : form.width
-            // anchors.centerIn: config.FullBlur == "true" ? parent : form
-
-            // This solves problem when FullBlur and HaveFormBackground is set to true but PartialBlur is false and FormPosition isn't center.
-            width: (config.FullBlur == "true" && config.PartialBlur == "false" && config.FormPosition != "center" ) ? parent.width - formBackground.width : config.FullBlur == "true" ? parent.width : form.width 
-            anchors.centerIn: config.FullBlur == "true" ? backgroundImage : form
+            width: config.FullBlur == "true" ? parent.width : form.width
+            anchors.centerIn: config.FullBlur == "true" ? parent : form
 
             source: config.FullBlur == "true" ? backgroundImage : blurMask
             blurEnabled: true
